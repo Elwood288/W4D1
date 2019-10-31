@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Ibeer } from '../Ibeer';
 import { BeerService } from '../beer.service';
 import {MatTableModule} from "@angular/material/table";
+import { AuthService } from '../services/auth.service';
+import { longStackSupport } from 'q';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-beer-list',
@@ -11,7 +14,7 @@ import {MatTableModule} from "@angular/material/table";
 export class BeerListComponent implements OnInit {
   beerList: Ibeer[]= [];
   displayedColumns: string[] = ["name", "tagline", "first_brewed"]
-  constructor(private BeerService: BeerService) {
+  constructor(private BeerService: BeerService, private authService: AuthService, private router: Router) {
 
    }
 
@@ -19,6 +22,11 @@ export class BeerListComponent implements OnInit {
     this.BeerService.getAll().subscribe(data=> (this.beerList = data));
     console.log(this.beerList);
 
+  }
+
+  logOut(){
+    this.authService.logout();
+    this.router.navigateByUrl("login");
   }
 
 }

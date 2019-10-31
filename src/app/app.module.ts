@@ -7,12 +7,18 @@ import {HttpClientModule} from "@angular/common/http";
 import { BeerComponent } from './beer/beer.component';
 import { BeerListComponent } from './beer-list/beer-list.component';
 
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+
 import {MatTableModule} from '@angular/material';
+import {FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     BeerComponent,
+    LoginComponent,
+    RegisterComponent,
     BeerListComponent,
     
   ],
@@ -20,7 +26,9 @@ import {MatTableModule} from '@angular/material';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    MatTableModule
+    MatTableModule,
+    ReactiveFormsModule,
+    FormsModule
    
   ],
   providers: [],
